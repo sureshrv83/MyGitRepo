@@ -12,13 +12,13 @@ node {
 
   stage 'IQ Scan'
   
-  stage 'Sit'
+  stage 'Sit1'
   
   stage 'UAT'
   stage 'UAT2'
   
   stage 'PRD'
   
-  stage 'Test'
+  stage 'Test1'
 
 }
