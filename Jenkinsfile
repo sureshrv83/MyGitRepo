@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'cd /Users/sureshramayanam/Documents/myGitRepo/webapp-master'
+                sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect'
                 sh '/Applications/apache-maven-3.5.4/bin/mvn clean package'
             }
         }
