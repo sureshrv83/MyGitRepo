@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'mvn --version'
+                sh '/Applications/apache-maven-3.5.4/bin/mvn clean package'
             }
         }
     }
