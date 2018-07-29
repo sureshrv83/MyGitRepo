@@ -15,6 +15,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+	<build>
   <plugins>
     <plugin>
 		<groupId>org.apache.tomcat.maven</groupId>
@@ -27,7 +28,7 @@
 		</configuration>
 	</plugin>
     </plugins>
-  <build>
+  
     <finalName>WebApp</finalName>
   </build>
 </project>
