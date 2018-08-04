@@ -11,5 +11,10 @@ pipeline {
                 sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;/Applications/apache-maven-3.5.4/bin/mvn tomcat7:deploy'
             }
         }
+        stage('input'){
+            steps{
+            input 'Does it need to done ?'
+            }
+        }
     }
 }
