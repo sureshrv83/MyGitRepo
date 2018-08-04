@@ -13,7 +13,7 @@ pipeline {
         }
         stage('input'){
             steps{
-            input 'Does it need to done ?'
+            input 'Does it need to done ? yes or no'
             }
         }
     }
