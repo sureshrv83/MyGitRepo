@@ -31,4 +31,11 @@ pipeline {
             }
         }
     }
+    post {
+    success {
+        slackSend channel: '#jenkinsconnect',
+                  color: 'good',
+                  message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
+    }
+}
 }
