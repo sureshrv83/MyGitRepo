@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+agent {
+    docker {
+        image 'maven:3-alpine'
+        args '-v /root/.m2:/root/.m2'
+    }
     environment {
            AUTH_DISPLAY = 'MAIN'
            MYNAME = 'MAIN'
@@ -9,7 +13,7 @@ pipeline {
             steps {
             sh 'echo $AUTH_DISPLAY'
             sh 'echo $MYNAME'
-                sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;/Applications/apache-maven-3.5.4/bin/mvn clean package'
+                sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn -B -DskipTests clean package'
             }
         }
         stage('deploy') {
@@ -17,7 +21,7 @@ pipeline {
 
             sh 'echo $AUTH_DISPLAY'
             sh 'echo $MYNAME'
-                sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;/Applications/apache-maven-3.5.4/bin/mvn tomcat7:redeploy'
+                sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn tomcat7:redeploy'
             }
         }
         stage('input'){
