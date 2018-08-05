@@ -1,8 +1,10 @@
 pipeline {
     agent any
     stages {
-    AUTH_DISPLAY = 'MAIN'
-    MYNAME = 'MAIN'
+    environment {
+           AUTH_DISPLAY = 'MAIN'
+           MYNAME = 'MAIN'
+    }
         stage('build') {
             steps {
             sh 'echo $AUTH_DISPLAY'
