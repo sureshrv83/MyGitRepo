@@ -1,18 +1,18 @@
 pipeline {
     agent any
-    stages {
     environment {
            AUTH_DISPLAY = 'MAIN'
            MYNAME = 'MAIN'
     }
-        stage('build') {
+    stages {
+  stage('build') {
             steps {
             sh 'echo $AUTH_DISPLAY'
             sh 'echo $MYNAME'
                 sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;/Applications/apache-maven-3.5.4/bin/mvn clean package'
             }
         }
-        stage('deply') {
+        stage('deploy') {
             steps {
 
             sh 'echo $AUTH_DISPLAY'
