@@ -1,8 +1,8 @@
 pipeline {
     agent any
     stages {
-    AUTH_DISPLAY=MAIN
-    MYNAME=MAIN
+    AUTH_DISPLAY = 'MAIN'
+    MYNAME = 'MAIN'
         stage('build') {
             steps {
             sh 'echo $AUTH_DISPLAY'
@@ -18,8 +18,8 @@ pipeline {
             }
         }
         stage('input'){
-            AUTH_DISPLAY=INSIDE_STAGE
-            MYNAME=AVYU
+        AUTH_DISPLAY = 'INSIDE STAGE'
+        MYNAME = 'AVYU'
             steps{
             sh 'echo $AUTH_DISPLAY'
             sh 'echo $MYNAME'
