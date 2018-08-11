@@ -14,7 +14,7 @@
 
         stages {
       stage('build') {
-      agent {
+      /*agent {
           docker {
             /*
              * Reuse the workspace on the agent defined at top-level of Pipeline but run inside a container.
@@ -24,13 +24,13 @@
             reuseNode true
             image 'maven:3.5.0-jdk-8'
           }
-        }
+        }*/
                 steps {
                 sh 'echo $AUTH_DISPLAY'
                 sh 'echo $MYNAME'
                 sh 'whoami'
                 sh 'docker version'
-                    sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn -B -DskipTests clean package'
+                sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn -B -DskipTests clean package'
                 }
             }
             stage('deploy') {
