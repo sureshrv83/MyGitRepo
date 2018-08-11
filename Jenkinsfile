@@ -21,8 +21,8 @@
                 sh 'echo $MYNAME'
                 sh 'whoami'
                 sh 'echo $PATH'
-                sh 'export PATH=$PATH:/usr/local/bin/'
-                sh 'docker version'
+          
+                sh 'export PATH=$PATH:/usr/local/bin/;docker version'
 
                 sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn -B -DskipTests clean package'
                 }}
