@@ -20,6 +20,7 @@
                 sh 'echo $AUTH_DISPLAY'
                 sh 'echo $MYNAME'
                 sh 'whoami'
+                sh 'echo $PATH'
                 sh 'docker version'
 
                 sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn -B -DskipTests clean package'
