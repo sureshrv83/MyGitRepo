@@ -2,7 +2,7 @@
 
     agent {
       node {
-        label 'docker'
+        label 'master'
       }
     }
 
