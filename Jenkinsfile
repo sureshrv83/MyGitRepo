@@ -5,6 +5,10 @@
         label 'master'
       }
     }
+    tools {
+        maven 'Maven 3.3.9'
+        jdk 'jdk8'
+    }
 
 
     environment {
@@ -21,7 +25,7 @@
                 sh 'echo $MYNAME'
                 sh 'whoami'
                 sh 'echo $PATH'
-          
+
                 sh 'export PATH=$PATH:/usr/local/bin/;docker version'
 
                 sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn -B -DskipTests clean package'
