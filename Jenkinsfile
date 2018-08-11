@@ -32,7 +32,7 @@
                 sh 'docker version'
                 sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn -B -DskipTests clean package'
                 }
-            }
+
             stage('deploy') {
                 steps {
 
@@ -59,4 +59,4 @@
                       message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
         }
     }
-    }
+    }}
