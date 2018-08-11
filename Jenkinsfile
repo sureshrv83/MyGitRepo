@@ -8,6 +8,7 @@
     tools {
         maven 'Maven 3.3.9'
         jdk 'jdk8'
+        docker 'docker'
     }
 
 
@@ -26,7 +27,7 @@
                 sh 'whoami'
                 sh 'echo $PATH'
 
-                sh 'export PATH=$PATH:/usr/local/bin/;docker version;export JAVA_HOME=/usr/bin'
+                sh 'docker version;export JAVA_HOME=/usr/bin'
 
                 sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn -B -DskipTests clean package'
                 }}
