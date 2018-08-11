@@ -26,7 +26,7 @@
                 sh 'whoami'
                 sh 'echo $PATH'
 
-                sh 'export PATH=$PATH:/usr/local/bin/;docker version'
+                sh 'export PATH=$PATH:/usr/local/bin/;docker version;export JAVA_HOME=/usr/bin'
 
                 sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn -B -DskipTests clean package'
                 }}
