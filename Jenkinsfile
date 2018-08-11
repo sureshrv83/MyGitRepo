@@ -21,6 +21,7 @@
                 sh 'echo $MYNAME'
                 sh 'whoami'
                 sh '/usr/local/bin/docker version'
+                
                 sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn -B -DskipTests clean package'
                 }}
 
