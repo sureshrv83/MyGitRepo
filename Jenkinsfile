@@ -8,7 +8,7 @@
     tools {
         maven 'Maven 3.3.9'
         jdk 'jdk8'
-        org.jenkinsci.plugins.docker.commons.tools.DockerTool 'docker1.2'
+        def dockerTool = tool name: 'docker1.2', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
     }
 
 
