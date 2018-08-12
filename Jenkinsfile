@@ -1,63 +1,61 @@
-    pipeline {
+pipeline {
 
-    agent {
-      node {
-        label 'master'
-        def dockerTool = tool name: 'docker1.2', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
-  
+  agent {
+    node {
+      label 'master'
+    }
+  }
+  tools {
+    maven 'Maven 3.3.9'
+    jdk 'jdk8'
+  }
+
+
+  environment {
+    AUTH_DISPLAY = 'MAIN'
+    MYNAME = 'MAIN'
+  }
+
+  stages {
+    stage('build') {
+
+
+      steps {
+        sh 'echo $AUTH_DISPLAY'
+        sh 'echo $MYNAME'
+        sh 'whoami'
+        sh 'echo $PATH'
+        /*sh 'docker version;export JAVA_HOME=/usr/bin'*/
+
+        sh 'export JAVA_HOME=/usr/bin;cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn -B -DskipTests clean package'
       }
     }
-    tools {
-        maven 'Maven 3.3.9'
-        jdk 'jdk8'
-          }
 
+    stage('deploy') {
+      steps {
 
-    environment {
-      AUTH_DISPLAY = 'MAIN'
-      MYNAME = 'MAIN'
+        sh 'echo $AUTH_DISPLAY'
+        sh 'echo $MYNAME'
+        sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn tomcat7:redeploy'
+      }
     }
-
-        stages {
-      stage('build') {
-
-
-                steps {
-                sh 'echo $AUTH_DISPLAY'
-                sh 'echo $MYNAME'
-                sh 'whoami'
-                sh 'echo $PATH'
-
-                sh 'docker version;export JAVA_HOME=/usr/bin'
-
-                sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn -B -DskipTests clean package'
-                }}
-
-            stage('deploy') {
-                steps {
-
-                sh 'echo $AUTH_DISPLAY'
-                sh 'echo $MYNAME'
-                    sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn tomcat7:redeploy'
-                }
-            }
-            stage('input'){
-            environment {
-            AUTH_DISPLAY = 'INSIDE STAGE'
-              MYNAME = 'AVYU'}
-                steps{
-                sh 'echo $AUTH_DISPLAY'
-                sh 'echo $MYNAME'
-                input 'Does it need to done ? yes or no'
-                }
-            }
+    stage('input'){
+      environment {
+        AUTH_DISPLAY = 'INSIDE STAGE'
+        MYNAME = 'AVYU'}
+        steps{
+          sh 'echo $AUTH_DISPLAY'
+          sh 'echo $MYNAME'
+          input 'Does it need to done ? yes or no'
         }
-        post {
-        success {
-            slackSend channel: '#jenkinsconnect',
-                      color: 'good',
-                      message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
-        }
+      }
+    }
+    post {
+      success {
+        slackSend channel: '#jenkinsconnect',
+        color: 'good',
+        message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
+      }
     }
 
-    }
+  }
