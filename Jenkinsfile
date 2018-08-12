@@ -27,7 +27,7 @@ pipeline {
         sh 'echo $PATH'
         /*sh 'docker version;export JAVA_HOME=/usr/bin'*/
 
-        sh 'export JAVA_HOME=/usr/bin;cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn -B -DskipTests clean package'
+        sh 'export JAVA_HOME=/usr;cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn -B -DskipTests clean package'
       }
     }
 
