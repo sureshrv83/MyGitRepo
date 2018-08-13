@@ -36,7 +36,7 @@ pipeline {
 
         sh 'echo $AUTH_DISPLAY'
         sh 'echo $MYNAME'
-        sh 'export JAVA_HOME=/usr;cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn tomcat7:redeploy'
+        sh 'export JAVA_HOME=/usr;cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn tomcat7:deploy'
       }
     }
     stage('input'){
