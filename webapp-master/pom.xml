@@ -26,7 +26,6 @@
 			<server>TomcatServer</server>
 			<path>/mkyongWebApp</path>
 		</configuration>
-
 	</plugin>
     </plugins>
 
