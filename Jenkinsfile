@@ -1,10 +1,14 @@
 pipeline {
 
-  agent any
-  /*tools {
+  agent {
+    node {
+      label 'master'
+    }
+  }
+  tools {
     maven 'Maven 3.3.9'
     jdk 'jdk8'
-  }*/
+  }
 
 
   environment {
@@ -23,7 +27,7 @@ pipeline {
         sh 'echo $PATH'
         /*sh 'docker version;export JAVA_HOME=/usr/bin'*/
 
-        sh 'export JAVA_HOME=/usr;cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;/Applications/apache-maven-3.5.4/bin/mvn -B -DskipTests clean package'
+        sh 'export JAVA_HOME=/usr;cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn -B -DskipTests clean package'
       }
     }
 
@@ -32,7 +36,7 @@ pipeline {
 
         sh 'echo $AUTH_DISPLAY'
         sh 'echo $MYNAME'
-        sh 'export JAVA_HOME=/usr;cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;/Applications/apache-maven-3.5.4/bin/mvn tomcat7:redeploy'
+        sh 'export JAVA_HOME=/usr;cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;mvn tomcat7:redeploy'
       }
     }
     stage('input'){
