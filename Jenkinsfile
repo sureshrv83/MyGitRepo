@@ -2,7 +2,7 @@ pipeline {
   agent
   {
       docker {
-          image 'maven:3-alpine'
+          image 'maven:2-alpine'
           args '-v /Users/Shared/Jenkins/.m2:/Users/Shared/Jenkins/.m2 $(which docker):/usr/local/bin/docker'
       }
         }
