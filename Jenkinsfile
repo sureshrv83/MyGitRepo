@@ -15,6 +15,7 @@ pipeline {
     AUTH_DISPLAY = 'MAIN'
     MYNAME = 'MAIN'
   }
+  
   stages {
     stage('build') {
       steps {
