@@ -25,6 +25,7 @@ pipeline {
         sh 'echo $AUTH_DISPLAY'
         sh 'echo $MYNAME'
         sh 'whoami'
+        sh 'export PATH=$PATH:/usr/local/bin/docker'
         sh 'echo $PATH'
         sh 'docker version;export JAVA_HOME=/usr/bin'
 
