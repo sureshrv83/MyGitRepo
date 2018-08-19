@@ -3,7 +3,7 @@ pipeline {
   {
     docker {
       image 'maven:3-alpine'
-      args '-v /Users/Shared/Jenkins/.m2:/Users/Shared/Jenkins/.m2 $(which docker):/usr/local/bin/docker'
+      args '-v /Users/Shared/Jenkins/.m2:/Users/Shared/Jenkins/.m2 $(which docker):/usr/local/bin'
     }
   }
   tools {
@@ -15,7 +15,7 @@ pipeline {
     AUTH_DISPLAY = 'MAIN'
     MYNAME = 'MAIN'
   }
-  
+
   stages {
     stage('build') {
       steps {
