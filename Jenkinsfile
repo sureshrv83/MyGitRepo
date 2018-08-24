@@ -24,7 +24,7 @@ pipeline {
         sh 'echo $MYNAME'
         sh 'whoami'
         sh 'docker version'
-        sh 'cd ${workspace};mvn -B -DskipTests clean package'
+        sh 'cd ${Workspace}/JenkinsConnect/gitconnect/webapp-master;mvn -B -DskipTests clean package'
       }
     }
     stage('deploy') {
@@ -32,7 +32,7 @@ pipeline {
 
         sh 'echo $AUTH_DISPLAY'
         sh 'echo $MYNAME'
-        sh 'cd ${workspace};mvn tomcat7:redeploy'
+        sh 'cd ${Workspace}/JenkinsConnect/gitconnect/webapp-master;mvn tomcat7:redeploy'
       }
     }
     stage('input'){
