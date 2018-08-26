@@ -1,20 +1,56 @@
 pipeline {
-    agent any
-    stages {
-        stage('build') {
-            steps {
-                sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;/Applications/apache-maven-3.5.4/bin/mvn clean package'
-            }
-        }
-        stage('deply') {
-            steps {
-                sh 'cd /Users/Shared/Jenkins/Home/workspace/JenkinsConnect/gitconnect/webapp-master;/Applications/apache-maven-3.5.4/bin/mvn tomcat7:redeploy'
-            }
-        }
-        stage('input'){
-            steps{
-            input 'Does it need to done ? yes or no'
-            }
-        }
+  /*agent
+  {
+    docker {
+      image 'maven:3-alpine'
+      args '-v /Users/Shared/Jenkins/.m2:/Users/Shared/Jenkins/.m2'
     }
-}
+  }*/
+  agent any
+  tools {
+    maven 'Maven 3.3.9'
+    jdk 'jdk8'
+    git 'git9'
+  }
+  environment {
+    AUTH_DISPLAY = 'MAIN'
+    MYNAME = 'MAIN'
+  }
+
+  stages {
+    stage('build') {
+      steps {
+        sh 'echo $AUTH_DISPLAY'
+        sh 'echo $MYNAME'
+        sh 'whoami'
+        sh 'docker version'
+        sh 'cd ${WORKSPACE}/webapp-master;mvn -B -DskipTests clean package'
+      }
+    }
+    stage('deploy') {
+      steps {
+
+        sh 'echo $AUTH_DISPLAY'
+        sh 'echo $MYNAME'
+        sh 'cd ${WORKSPACE}/webapp-master;mvn tomcat7:redeploy'
+      }
+    }
+    stage('input'){
+      environment {
+        AUTH_DISPLAY = 'INSIDE STAGE'
+        MYNAME = 'AVYU'}
+        steps{
+          sh 'echo $AUTH_DISPLAY'
+          sh 'echo $MYNAME'
+          input 'Does it need to done ? yes or no'
+        }
+      }
+    }
+    post {
+      success {
+        slackSend channel: '#jenkinsconnect',
+        color: 'good',
+        message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
+      }
+    }
+  }
