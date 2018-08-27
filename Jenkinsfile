@@ -3,7 +3,7 @@ pipeline {
   {
     docker {
       image 'maven:3-alpine'
-      args '-u jenkins:jenkins -v /Users/Shared/Jenkins/.m2:/Users/Shared/Jenkins/.m2 -w /Users/Shared/Jenkins/ws:/Users/Shared/Jenkins/ws'
+      args '-u jenkins -v /Users/Shared/Jenkins/.m2:/Users/Shared/Jenkins/.m2 -w /Users/Shared/Jenkins/ws:/Users/Shared/Jenkins/ws'
     }
   }
 
