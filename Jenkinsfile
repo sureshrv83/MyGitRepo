@@ -2,8 +2,8 @@ pipeline {
   agent
   {
     docker {
-      image 'maven:3-alpine'
-      args '-u 267:267 -v /Users/Shared/Jenkins/.m2:/Users/Shared/Jenkins/.m2 -w /Users/Shared/Jenkins/ws:/Users/Shared/Jenkins/ws'
+      image 'maven:3.3.9-jdk-8-alpine'
+      args '-u 0:0 -v /Users/Shared/Jenkins/.m2:/Users/Shared/Jenkins/.m2 -w /Users/Shared/Jenkins/ws:/Users/Shared/Jenkins/ws'
     }
   }
 
