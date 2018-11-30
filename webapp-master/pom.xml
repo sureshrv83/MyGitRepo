@@ -26,10 +26,10 @@
 			<server>TomcatServer</server>
 			<path>/mkyongWebApp</path>
 		</configuration>
-	     
+
 	</plugin>
     </plugins>
-  
+
     <finalName>WebApp</finalName>
   </build>
 </project>
