@@ -18,6 +18,7 @@ pipeline {
       }
     }
     stage('input') {
+
       environment {
         AUTH_DISPLAY = 'INSIDE STAGE'
         MYNAME = 'AVYU'
@@ -29,7 +30,7 @@ pipeline {
       }
     }
     stage('Test') {
-      
+
       steps {
         echo 'suresh'
       }
