@@ -1,14 +1,18 @@
 pipeline {
-  agent {
-    docker {
-      image 'any'
-    }
-
-  }
+  agent any
   stages {
     stage('test') {
-      steps {
-        sh 'echo suresh'
+      parallel {
+        stage('test') {
+          steps {
+            sh 'echo suresh'
+          }
+        }
+        stage('parallel step') {
+          steps {
+            echo 'Avyu'
+          }
+        }
       }
     }
   }
