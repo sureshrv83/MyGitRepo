@@ -3,12 +3,12 @@ pipeline {
   stages {
     stage('test') {
       parallel {
-        stage('test') {
+        stage('test1') {
           steps {
             sh 'echo suresh'
           }
         }
-        stage('parallel step') {
+        stage('test2') {
           steps {
             echo 'Avyu'
             sh 'ls -ltr'
