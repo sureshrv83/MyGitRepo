@@ -11,6 +11,7 @@ pipeline {
         stage('parallel step') {
           steps {
             echo 'Avyu'
+            sh 'ls -ltr'
           }
         }
       }
