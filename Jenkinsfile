@@ -14,7 +14,7 @@ pipeline {
       steps {
         sh 'echo $AUTH_DISPLAY'
         sh 'echo $MYNAME'
-        sh 'cd ${WORKSPACE}/webapp-master;mvn tomcat7:redeploy'
+        sh 'cd ${WORKSPACE}/webapp-master;mvn clean tomcat7:redeploy'
       }
     }
     stage('input') {
